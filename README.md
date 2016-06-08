@@ -2,7 +2,7 @@
 Video player based on [ffplay](http://ffmpeg.org)
 
 基于ijkplayer，增加pod支持，仅仅为了支持自己的项目使用。如果有朋友需要，也可以帮忙推到cocoapods
-使用方式为：pod 'ijkplayer', :git => 'git@gitlab.i.mm:huangxin1/ijkplayer-ios.git', :branch => 'master'
+使用方式为：pod 'ijkplayer', :git => 'git@github.com:yuanxun2007/ijkplayer.git', :branch => 'master'
 
 ### Download
 
