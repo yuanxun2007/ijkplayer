@@ -1,6 +1,18 @@
 tag next
 --------------------------------
+
+tag k0.6.1
+--------------------------------
+- concat: fix crash introduced in k0.6.0
+- flvdec: fix seek problem introduced in k0.6.0
+- hls: fix regression with ranged media segments
+
+tag k0.6.0
+--------------------------------
 - openssl: upgrade to 1.0.2h
+- ffmpeg: upgrade to n3.1
+- MediaCodec: add options to enable resolution change.
+- VideoToolbox: add options to enable resolution change.
 
 tag k0.5.1
 --------------------------------

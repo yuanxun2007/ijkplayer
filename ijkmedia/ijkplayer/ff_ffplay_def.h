@@ -101,7 +101,7 @@
 /* AV sync correction is done if above the maximum AV sync threshold */
 #define AV_SYNC_THRESHOLD_MAX 0.1
 /* If a frame duration is longer than this, it will not be duplicated to compensate AV sync */
-#define AV_SYNC_FRAMEDUP_THRESHOLD 0.1
+#define AV_SYNC_FRAMEDUP_THRESHOLD 0.15
 /* no AV correction is done if too big error */
 #define AV_NOSYNC_THRESHOLD 100.0
 
@@ -293,7 +293,6 @@ typedef struct VideoState {
     AVStream *audio_st;
     PacketQueue audioq;
     int audio_hw_buf_size;
-    uint8_t silence_buf[SDL_AUDIO_MIN_BUFFER_SIZE];
     uint8_t *audio_buf;
     uint8_t *audio_buf1;
     unsigned int audio_buf_size; /* in bytes */
@@ -462,6 +461,9 @@ typedef struct FFStatistic
     FFTrackCacheStatistic video_cache;
     FFTrackCacheStatistic audio_cache;
 
+    int64_t buf_backwards;
+    int64_t buf_forwards;
+    int64_t buf_capacity;
     SDL_SpeedSampler2 tcp_read_sampler;
 } FFStatistic;
 
@@ -616,11 +618,14 @@ typedef struct FFPlayer {
     int vtb_max_frame_width;
     int vtb_async;
     int vtb_wait_async;
+    int vtb_handle_resolution_change;
 
     int mediacodec_all_videos;
     int mediacodec_avc;
     int mediacodec_hevc;
     int mediacodec_mpeg2;
+    int mediacodec_mpeg4;
+    int mediacodec_handle_resolution_change;
     int mediacodec_auto_rotate;
 
     int opensles;
@@ -733,12 +738,14 @@ inline static void ffp_reset_internal(FFPlayer *ffp)
     ffp->videotoolbox                   = 0; // option
     ffp->vtb_max_frame_width            = 0; // option
     ffp->vtb_async                      = 0; // option
+    ffp->vtb_handle_resolution_change   = 0; // option
     ffp->vtb_wait_async                 = 0; // option
 
     ffp->mediacodec_all_videos          = 0; // option
     ffp->mediacodec_avc                 = 0; // option
     ffp->mediacodec_hevc                = 0; // option
     ffp->mediacodec_mpeg2               = 0; // option
+    ffp->mediacodec_handle_resolution_change = 0; // option
     ffp->mediacodec_auto_rotate         = 0; // option
 
     ffp->opensles                       = 0; // option
