@@ -1,3 +1,5 @@
+# ijkplayer [![Build Status](https://travis-ci.org/Bilibili/ijkplayer.svg?branch=master)](https://travis-ci.org/Bilibili/ijkplayer)
+
 # ijkplayer
 
  Platform | Build Status
