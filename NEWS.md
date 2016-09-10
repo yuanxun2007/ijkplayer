@@ -1,6 +1,14 @@
 tag next
 --------------------------------
 
+<<<<<<< HEAD
+=======
+tag k0.6.2
+--------------------------------
+- ffmpeg: fix wild pointer when decoder was not found
+- player: fix bug introduced in k0.6.0
+
+>>>>>>> Bilibili/master
 tag k0.6.1
 --------------------------------
 - concat: fix crash introduced in k0.6.0

@@ -197,6 +197,7 @@ void IJKFFIOStatCompleteRegister(void (*cb)(const char *url,
         [_glView setHudValue:nil forKey:@"host"];
         [_glView setHudValue:nil forKey:@"path"];
         [_glView setHudValue:nil forKey:@"ip"];
+        [_glView setHudValue:nil forKey:@"tcp-info"];
         [_glView setHudValue:nil forKey:@"http"];
         [_glView setHudValue:nil forKey:@"tcp-spd"];
         [_glView setHudValue:nil forKey:@"t-prepared"];
@@ -1156,6 +1157,7 @@ static int onInjectTcpIOControl(IJKFFMoviePlayerController *mpc, id<IJKMediaUrlO
     AVAppTcpIOControl *realData = data;
     assert(realData);
     assert(sizeof(AVAppTcpIOControl) == data_size);
+<<<<<<< HEAD
 
     switch (type) {
         case IJKMediaCtrl_WillTcpOpen:
@@ -1187,6 +1189,39 @@ static int onInjectTcpIOControl(IJKFFMoviePlayerController *mpc, id<IJKMediaUrlO
     if (openData.error < 0)
         return -1;
 
+=======
+
+    switch (type) {
+        case IJKMediaCtrl_WillTcpOpen:
+
+            break;
+        case IJKMediaCtrl_DidTcpOpen:
+            mpc->_monitor.tcpError = realData->error;
+            mpc->_monitor.remoteIp = [NSString stringWithUTF8String:realData->ip];
+            [mpc->_glView setHudValue: mpc->_monitor.remoteIp forKey:@"ip"];
+            break;
+        default:
+            assert(!"unexcepted type for tcp io control");
+            break;
+    }
+
+    if (delegate == nil)
+        return 0;
+
+    NSString *urlString = [NSString stringWithUTF8String:realData->ip];
+
+    IJKMediaUrlOpenData *openData =
+    [[IJKMediaUrlOpenData alloc] initWithUrl:urlString
+                                       event:(IJKMediaEvent)type
+                                segmentIndex:0
+                                retryCounter:0];
+    openData.fd = realData->fd;
+
+    [delegate willOpenUrl:openData];
+    if (openData.error < 0)
+        return -1;
+    [mpc->_glView setHudValue: [NSString stringWithFormat:@"fd:%d %@", openData.fd, openData.msg?:@"unknown"] forKey:@"tcp-info"];
+>>>>>>> Bilibili/master
     return 0;
 }
 
