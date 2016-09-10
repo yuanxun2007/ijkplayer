@@ -192,10 +192,7 @@ typedef NS_ENUM(NSInteger, IJKMediaEvent) {
 
 @property(nonatomic, retain) NSString *url;
 @property(nonatomic, assign) int fd;
-<<<<<<< HEAD
-=======
 @property(nonatomic, strong) NSString *msg;
->>>>>>> Bilibili/master
 @property(nonatomic) int error; // set a negative value to indicate an error has occured.
 @property(nonatomic, getter=isHandled)    BOOL handled;     // auto set to YES if url changed
 @property(nonatomic, getter=isUrlChanged) BOOL urlChanged;  // auto set to YES by url changed

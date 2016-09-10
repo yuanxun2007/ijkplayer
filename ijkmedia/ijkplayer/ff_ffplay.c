@@ -636,13 +636,10 @@ static void video_image_display2(FFPlayer *ffp)
     Frame *vp;
 
     vp = frame_queue_peek_last(&is->pictq);
-<<<<<<< HEAD
-=======
 
     if (is->latest_seek_load_serial == vp->serial)
         ffp->stat.latest_seek_load_duration = (av_gettime() - is->latest_seek_load_start_at) / 1000;
 
->>>>>>> Bilibili/master
     if (vp->bmp) {
         SDL_VoutDisplayYUVOverlay(ffp->vout, vp->bmp);
         ffp->stat.vfps = SDL_SpeedSamplerAdd(&ffp->vfps_sampler, FFP_SHOW_VFPS_FFPLAY, "vfps[ffplay]");
@@ -3307,11 +3304,7 @@ static AVDictionary **ffp_get_opt_dict(FFPlayer *ffp, int opt_category)
     }
 }
 
-<<<<<<< HEAD
-static void ffp_set_playback__async_statistic(FFPlayer *ffp, int64_t buf_backwards, int64_t buf_forwards, int64_t buf_capacity);
-=======
 static void ffp_set_playback_async_statistic(FFPlayer *ffp, int64_t buf_backwards, int64_t buf_forwards, int64_t buf_capacity);
->>>>>>> Bilibili/master
 static int app_func_event(AVApplicationContext *h, int message ,void *data, size_t size)
 {
     if (!h || !h->opaque || !data)
@@ -3326,13 +3319,9 @@ static int app_func_event(AVApplicationContext *h, int message ,void *data, size
             SDL_SpeedSampler2Add(&ffp->stat.tcp_read_sampler, event->bytes);
     } else if (message == AVAPP_EVENT_ASYNC_STATISTIC && sizeof(AVAppAsyncStatistic) == size) {
         AVAppAsyncStatistic *statistic =  (AVAppAsyncStatistic *) (intptr_t)data;
-<<<<<<< HEAD
-        ffp_set_playback__async_statistic(ffp, statistic->buf_backwards, statistic->buf_forwards, statistic->buf_capacity);
-=======
         ffp->stat.buf_backwards = statistic->buf_backwards;
         ffp->stat.buf_forwards = statistic->buf_forwards;
         ffp->stat.buf_capacity = statistic->buf_capacity;
->>>>>>> Bilibili/master
     }
     return inject_callback(ffp->inject_opaque, message , data, size);
 }
@@ -3946,15 +3935,6 @@ void ffp_set_playback_rate(FFPlayer *ffp, float rate)
     ffp->pf_playback_rate_changed = 1;
 }
 
-static void ffp_set_playback__async_statistic(FFPlayer *ffp, int64_t buf_backwards, int64_t buf_forwards, int64_t buf_capacity)
-{
-     if (!ffp)
-        return;
-     ffp->stat.buf_backwards = buf_backwards;
-     ffp->stat.buf_forwards = buf_forwards;
-     ffp->stat.buf_capacity = buf_capacity;
-}
-
 int ffp_get_video_rotate_degrees(FFPlayer *ffp)
 {
     VideoState *is = ffp->is;
@@ -4105,20 +4085,6 @@ int64_t ffp_get_property_int64(FFPlayer *ffp, int id, int64_t default_value)
             return ffp ? ffp->stat.bit_rate : default_value;
         case FFP_PROP_INT64_TCP_SPEED:
             return ffp ? SDL_SpeedSampler2GetSpeed(&ffp->stat.tcp_read_sampler) : default_value;
-<<<<<<< HEAD
-        case FFP_PROP_INT64_AVAPP_ASYNC_STATISTIC_BUF_BACKWARDS:
-            if (!ffp)
-                return default_value;
-            return ffp->stat.buf_backwards;
-        case FFP_PROP_INT64_AVAPP_ASYNC_STATISTIC_BUF_FORWARDS:
-            if (!ffp)
-                return default_value;
-            return ffp->stat.buf_forwards;
-        case FFP_PROP_INT64_AVAPP_ASYNC_STATISTIC_BUF_CAPACITY:
-            if (!ffp)
-                return default_value;
-            return ffp->stat.buf_capacity;
-=======
         case FFP_PROP_INT64_ASYNC_STATISTIC_BUF_BACKWARDS:
             if (!ffp)
                 return default_value;
@@ -4133,7 +4099,6 @@ int64_t ffp_get_property_int64(FFPlayer *ffp, int id, int64_t default_value)
             return ffp->stat.buf_capacity;
         case FFP_PROP_INT64_LATEST_SEEK_LOAD_DURATION:
             return ffp ? ffp->stat.latest_seek_load_duration : default_value;
->>>>>>> Bilibili/master
         default:
             return default_value;
     }

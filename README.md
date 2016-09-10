@@ -5,17 +5,7 @@
  Android | [![Build Status](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-android.svg?branch=master)](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-android)
  iOS | [![Build Status](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-ios.svg?branch=master)](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-ios)
 
-# ijkplayer
-
- Platform | Build Status
- -------- | ------------
- Android | [![Build Status](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-android.svg?branch=master)](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-android)
- iOS | [![Build Status](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-ios.svg?branch=master)](https://travis-ci.org/bbcallen/ci-ijk-ffmpeg-ios)
-
 Video player based on [ffplay](http://ffmpeg.org)
-
-基于ijkplayer，增加pod支持，仅仅为了支持自己的项目使用。如果有朋友需要，也可以帮忙推到cocoapods
-使用方式为：pod 'ijkplayer', :git => 'git@github.com:yuanxun2007/ijkplayer.git', :branch => 'master'
 
 ### Download
 
@@ -31,19 +21,6 @@ allprojects {
 
 dependencies {
     # required, enough for most devices.
-<<<<<<< HEAD
-    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.1'
-
-    # Other ABIs: optional
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.6.1'
-
-    # ExoPlayer as IMediaPlayer: optional, experimental
-    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
-=======
     compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.2'
     compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.2'
 
@@ -55,7 +32,6 @@ dependencies {
 
     # ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.2'
->>>>>>> Bilibili/master
 }
 ```
 - iOS
@@ -161,11 +137,7 @@ sudo dpkg-reconfigure dash
 ```
 git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
 cd ijkplayer-android
-<<<<<<< HEAD
-git checkout -B latest k0.6.1
-=======
 git checkout -B latest k0.6.2
->>>>>>> Bilibili/master
 
 ./init-android.sh
 
@@ -189,12 +161,7 @@ cd ..
 #     }
 #
 # If you want to enable debugging ijkplayer(native modules) on Android Studio 2.2+: (experimental)
-<<<<<<< HEAD
-#     cd android
-#     sh patch-debugging-with-lldb.sh armv7a
-=======
 #     sh android/patch-debugging-with-lldb.sh armv7a
->>>>>>> Bilibili/master
 #     Install Android Studio 2.2(+)
 #     Preference -> Android SDK -> SDK Tools
 #     Select (LLDB, NDK, Android SDK Build-tools,Cmake) and install
@@ -224,11 +191,7 @@ cd ..
 ```
 git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios
 cd ijkplayer-ios
-<<<<<<< HEAD
-git checkout -B latest k0.6.1
-=======
 git checkout -B latest k0.6.2
->>>>>>> Bilibili/master
 
 ./init-ios.sh
 

@@ -2,13 +2,8 @@
 
 set -e
 
-<<<<<<< HEAD
-VERSION_CODE=601002
-VERSION_NAME=0.6.1.2
-=======
 VERSION_CODE=602000
 VERSION_NAME=0.6.2
->>>>>>> Bilibili/master
 VERSION_TARGET=$1
 
 do_version_readme() {

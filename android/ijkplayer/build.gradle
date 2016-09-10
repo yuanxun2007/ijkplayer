@@ -26,13 +26,8 @@ ext {
 
     targetSdkVersion = 23
 
-<<<<<<< HEAD
-    versionCode = 601002
-    versionName = "0.6.1.2"
-=======
     versionCode = 602000
     versionName = "0.6.2"
->>>>>>> Bilibili/master
 }
 
 wrapper {

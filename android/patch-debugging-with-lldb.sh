@@ -35,16 +35,6 @@ patch_disable () {
     PARAM_TARGET=$1
     case "$PARAM_TARGET" in
         armv5|armv7a|arm64|x86|x86_64)
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-            git apply -R patches/0003-$PARAM_TARGET-enable-debugging-with-LLDB.patch
-            echo "git apply reverse ==> patches/0003-$PARAM_TARGET-enable-debugging-with-LLDB.patch"
-            git apply -R patches/0002-gradle-upgrade-build-tool-to-2.2.0-beta2.patch
-            echo "git apply reverse ==> patches/0002-gradle-upgrade-build-tool-to-2.2.0-beta2.patch"
-            git apply -R patches/0001-gitignore-ignore-.externalNativeBuild.patch
-=======
-=======
->>>>>>> Bilibili/master
             git apply -R android/patches/0004-$PARAM_TARGET-link-prebuilt-staic-libraries-of-ffmepg.patch
             echo "git apply reverse ==> patches/0004-$PARAM_TARGET-link-prebuilt-staic-libraries-of-ffmepg.patch"
 
@@ -57,10 +47,6 @@ patch_disable () {
             git apply -R android/patches/0002-gradle-upgrade-build-tool-to-2.2.0-beta2.patch
             echo "git apply reverse ==> patches/0002-gradle-upgrade-build-tool-to-2.2.0-beta2.patch"
             git apply -R android/patches/0001-gitignore-ignore-.externalNativeBuild.patch
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> Bilibili/master
             echo "git apply reverse ==> patches/0001-gitignore-ignore-.externalNativeBuild.patch"
         ;;
     esac
